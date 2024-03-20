@@ -28,7 +28,9 @@ router.put('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
   try {
-    const photos = await Photo.findAll({ where: { categoryId: req.params.id } });
+    const photos = await Photo.findAll({
+      where: { categoryId: req.params.id },
+    });
 
     photos.forEach((photo) => {
       fs.unlinkSync(path.join(__dirname, '..', '..', 'public', photo.photoPath));
@@ -103,10 +105,8 @@ router.put('/:categoryName/:id', async (req, res) => {
 
 router.post('/:categoryName/:id/like', async (req, res) => {
   try {
-    console.log(req.params);
     const user = req.session.user;
-    const lalala = await Like.create({ userId: user.id, photoId: +req.params.id });
-    console.log(lalala);
+    await Like.create({ userId: user.id, photoId: +req.params.id });
     res.sendStatus(200);
   } catch (error) {
     console.error(error);
