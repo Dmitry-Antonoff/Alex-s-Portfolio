@@ -7,7 +7,7 @@ module.exports = function FormPhoto(props) {
     <Layout {...props}>
       <div className="div-form">
         <h1 className="form-h1">Add Photo</h1>
-        <form className="form" action={`/portfolio/${category.categoryName}`} method='post' enctype="multipart/form-data">
+        <form data-categoryname={category.categoryName} name='photoCreate' className="form"  enctype="multipart/form-data">
           <p className="form-p">Photo name </p>
           <input
             className="form-input"
