@@ -28,9 +28,7 @@ router.put('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
   try {
-    const photos = await Photo.findAll({
-      where: { categoryId: req.params.id },
-    });
+    const photos = await Photo.findAll({ where: { categoryId: req.params.id } });
 
     photos.forEach((photo) => {
       fs.unlinkSync(path.join(__dirname, '..', '..', 'public', photo.photoPath));
@@ -59,11 +57,6 @@ const upload = multer({ storage: storage });
 router.post('/:categoryName', upload.single('photo'), async (req, res) => {
   const { photoName, description } = req.body;
   const category = await Category.findOne({ where: { categoryName: req.params.categoryName } });
-
-  if (!req.file) {
-    return res.status(400).send('Файл не был загружен.');
-  }
-
   try {
     await Photo.create({
       name: photoName,
@@ -72,10 +65,10 @@ router.post('/:categoryName', upload.single('photo'), async (req, res) => {
       categoryId: category.id,
     });
 
-    res.redirect('/portfolio');
+    res.sendStatus(200);
   } catch (error) {
     console.error(error);
-    res.render(Error, { message: 'Something went wrong...', error: { error } });
+    res.json({ message: 'Something went wrong...', error: { error } }, 500);
   }
 });
 

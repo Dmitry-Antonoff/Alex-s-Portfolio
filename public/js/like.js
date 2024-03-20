@@ -1,11 +1,9 @@
 const likes = document.getElementsByClassName('like');
-console.log(likes);
 
 [...likes].forEach((like) => {
   like.addEventListener('click', async (e) => {
     const { id, categoryname } = e.target.parentNode.dataset;
     const liked = [...e.target.parentNode.classList].includes('liked')
-    console.log();
     await fetch(`/portfolio/${categoryname}/${id}/like`, {
       method: liked?'DELETE':'POST',
       headers: {
