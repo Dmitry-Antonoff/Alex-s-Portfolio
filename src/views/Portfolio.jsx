@@ -24,10 +24,10 @@ module.exports = function Portfolio(props) {
               <div className="portfolio-nav-buttons">
                 <div className="left-right-buttons">
                   <button className="button circle-btn first-circle portfolio-prev">
-                    <img src="img/left.svg" />
+                    <img src="/img/left.svg" />
                   </button>
                   <button className="button circle-btn last-circle portfolio-next">
-                    <img src="img/right.svg" />
+                    <img src="/img/right.svg" />
                   </button>
                 </div>
                 {user?.role === 'ADMIN' ? (

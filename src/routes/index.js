@@ -104,7 +104,6 @@ router.get('/portfolio/:categoryName', async (req, res) => {
         },
       ],
     });
-    console.log(category);
     res.render(CategoryPhotos, { category });
   } catch (error) {
     res.render(Error, { message: 'Something went wrong...', error: {} });
