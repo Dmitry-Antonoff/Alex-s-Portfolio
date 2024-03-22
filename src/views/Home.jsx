@@ -9,36 +9,36 @@ module.exports = function Home(props) {
       <div className="landing-types-collage">
         <div className="landing">
           <div>
-            <h4 className="landing-h4">STUNNING PHOTOGRAPHY BY</h4>
+            <h4 className="landing-h4">PHOTOGRAPHY BY</h4>
             <h1 className="landing-h1">ALEX'S PORTFOLIO</h1>
           </div>
         </div>
         <div className="types-collage">
           <div className="photo-types">
-            <div className="type-cell">
+            {/* <div className="type-cell">
               <img className="star-icon" src="img/star.svg" />
               <p className="type-photo">EVENT PHOTOGRAPHY</p>
-            </div>
-            <div className="type-cell">
+            </div> */}
+            {/* <div className="type-cell">
               <img className="star-icon" src="img/star.svg" />
               <p className="type-photo">COMERCIAL PHOTOGRAPHY</p>
-            </div>
+            </div> */}
             <div className="type-cell">
               <img className="star-icon" src="img/star.svg" />
               <p className="type-photo">PRODUCT PHOTOGRAPHY</p>
             </div>
-            <div className="type-cell">
+            {/* <div className="type-cell">
               <img className="star-icon" src="img/star.svg" />
               <p className="type-photo">WEDDING PHOTOGRAPHY</p>
-            </div>
+            </div> */}
             <div className="type-cell">
               <img className="star-icon" src="img/star.svg" />
               <p className="type-photo">LANDSCAPE PHOTOGRAPHY</p>
             </div>
-            <div className="type-cell">
+            {/* <div className="type-cell">
               <img className="star-icon" src="img/star.svg" />
               <p className="type-photo">BRANDING PHOTOGRAPHY</p>
-            </div>
+            </div> */}
             <div className="type-cell">
               <img className="star-icon" src="img/star.svg" />
               <p className="type-photo">PORTRAIT PHOTOGRAPHY</p>
@@ -57,10 +57,10 @@ module.exports = function Home(props) {
           </div>
           <div className="portfolio-nav-buttons">
             <div className="left-right-buttons">
-              <button className="button circle-btn first-circle portfolio-prev">
+              <button className="button circle-btn first-circle portfolio-prev left-right">
                 <img src="img/left.svg" />
               </button>
-              <button className="button circle-btn last-circle portfolio-next">
+              <button className="button circle-btn last-circle portfolio-next left-right">
                 <img src="img/right.svg" />
               </button>
             </div>
@@ -76,8 +76,11 @@ module.exports = function Home(props) {
                 <div className="div-card-img">
                   <img className="photo-img" src={`${photo.photoPath}`} alt="photo" />
                 </div>
-                <div className="card-description" data-id={photo.id}
-                      data-categoryname={category.categoryName}>
+                <div
+                  className="card-description"
+                  data-id={photo.id}
+                  data-categoryname={category.categoryName}
+                >
                   <h3>{photo.name}</h3>
                   {user ? (
                     <svg
@@ -95,7 +98,9 @@ module.exports = function Home(props) {
                         fill="red"
                       ></path>
                     </svg>
-                  ) : (<></>)}
+                  ) : (
+                    <></>
+                  )}
 
                   <a className="view-card" href={`/portfolio/${category.categoryName}/${photo.id}`}>
                     <p>VIEW PROJECT</p>

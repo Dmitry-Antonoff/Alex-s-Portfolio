@@ -7,8 +7,8 @@ module.exports = function Portfolio(props) {
   return (
     <Layout {...props}>
       {user?.role === 'ADMIN' ? (
-        <a href="/portfolio/new-category" className="button addCategory">
-          Add Category
+        <a href="/portfolio/new-category" className="addCategory">
+          <button className="button">Add Category</button>
         </a>
       ) : (
         <></>
@@ -23,27 +23,27 @@ module.exports = function Portfolio(props) {
               </div>
               <div className="portfolio-nav-buttons">
                 <div className="left-right-buttons">
-                  <button className="button circle-btn first-circle portfolio-prev">
+                  <button className="button circle-btn first-circle portfolio-prev left-right">
                     <img src="/img/left.svg" />
                   </button>
-                  <button className="button circle-btn last-circle portfolio-next">
+                  <button className="button circle-btn last-circle portfolio-next left-right">
                     <img src="/img/right.svg" />
                   </button>
                 </div>
                 {user?.role === 'ADMIN' ? (
                   <>
-                    <a data-categoryid={category.id} className="button">
-                      Delete Category
+                    <a data-categoryid={category.id}>
+                      <button className="button">Delete Category</button>
                     </a>
-                    <a href={`/portfolio/${category.categoryName}/edit`} className="button">
-                      Edit Category
+                    <a href={`/portfolio/${category.categoryName}/edit`}>
+                      <button className="button">Edit Category</button>
                     </a>
                   </>
                 ) : (
                   <></>
                 )}
-                <a href={`/portfolio/${category.categoryName}`} className="button">
-                  View All Photos &rarr;
+                <a href={`/portfolio/${category.categoryName}`}>
+                  <button className="button">View All Photos &rarr;</button>
                 </a>
               </div>
             </div>
@@ -53,26 +53,31 @@ module.exports = function Portfolio(props) {
                   <div className="div-card-img">
                     <img className="photo-img" src={`${photo.photoPath}`} alt="photo" />
                   </div>
-                  <div className="card-description" data-id={photo.id}
-                      data-categoryname={category.categoryName}>
+                  <div
+                    className="card-description"
+                    data-id={photo.id}
+                    data-categoryname={category.categoryName}
+                  >
                     <h3>{photo.name}</h3>
                     {user ? (
-                    <svg
-                      data-id={photo.id}
-                      data-categoryname={category.categoryName}
-                      className={photo.Likes.length > 0 ? 'like liked' : 'like'}
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="100"
-                      height="100"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                    >
-                      <path
-                        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.48 5.48 0 0 0 0-7.78z"
-                        fill="red"
-                      ></path>
-                    </svg>
-                  ) : (<></>)}
+                      <svg
+                        data-id={photo.id}
+                        data-categoryname={category.categoryName}
+                        className={photo.Likes.length > 0 ? 'like liked' : 'like'}
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="100"
+                        height="100"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <path
+                          d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.48 5.48 0 0 0 0-7.78z"
+                          fill="red"
+                        ></path>
+                      </svg>
+                    ) : (
+                      <></>
+                    )}
                     <a
                       className="view-card"
                       href={`/portfolio/${category.categoryName}/${photo.id}`}
