@@ -8,7 +8,7 @@ module.exports = function Portfolio(props) {
     <Layout {...props}>
       {user?.role === 'ADMIN' ? (
         <a href="/portfolio/new-category" className="addCategory">
-          <button className="button">Add Category</button>
+          <button className="button phone-viewAll">Add Category</button>
         </a>
       ) : (
         <></>
@@ -21,7 +21,7 @@ module.exports = function Portfolio(props) {
               <div className="portfolio-text-div">
                 <h2 className="portfolio-subtitle">{category.categoryName}</h2>
               </div>
-              <div className="portfolio-nav-buttons">
+              <div className="portfolio-nav-buttons pc">
                 <div className="left-right-buttons">
                   <button className="button circle-btn first-circle portfolio-prev left-right">
                     <img src="/img/left.svg" />
@@ -47,6 +47,24 @@ module.exports = function Portfolio(props) {
                 </a>
               </div>
             </div>
+            <div className="phone-category-nav">
+              {user?.role === 'ADMIN' ? (
+                <>
+                  <a data-categoryid={category.id} className=" phone">
+                    <button className="button phone-viewAll">Delete Category</button>
+                  </a>
+                  <a href={`/portfolio/${category.categoryName}/edit`} className=" phone ">
+                    <button className="button phone-viewAll">Edit Category</button>
+                  </a>
+                </>
+              ) : (
+                <></>
+              )}
+              <a href={`/portfolio/${category.categoryName}`} className=" phone">
+                <button className="button phone-viewAll">View All Photos &rarr;</button>
+              </a>
+            </div>
+            <div className="line phone"></div>
             <div className="portfolio-widget portfolio-slider">
               {category.Photos?.map((photo) => (
                 <div className="card">
@@ -82,12 +100,20 @@ module.exports = function Portfolio(props) {
                       className="view-card"
                       href={`/portfolio/${category.categoryName}/${photo.id}`}
                     >
-                      <p>VIEW PROJECT</p>
+                      <p>VIEW PHOTO</p>
                       <img src="/img/arrow-up.svg" />
                     </a>
                   </div>
                 </div>
               ))}
+            </div>
+            <div className="left-right-buttons phone">
+              <button className="button circle-btn first-circle portfolio-prev left-right">
+                <img src="/img/left.svg" />
+              </button>
+              <button className="button circle-btn last-circle portfolio-next left-right">
+                <img src="/img/right.svg" />
+              </button>
             </div>
           </div>
         ))}

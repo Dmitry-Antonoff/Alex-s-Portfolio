@@ -10,38 +10,30 @@ module.exports = function Home(props) {
         <div className="landing">
           <div>
             <h4 className="landing-h4">PHOTOGRAPHY BY</h4>
-            <h1 className="landing-h1">ALEX'S PORTFOLIO</h1>
+            <h1 className="landing-h1">ALEXANDER ANTONOV</h1>
           </div>
         </div>
         <div className="types-collage">
           <div className="photo-types">
-            {/* <div className="type-cell">
-              <img className="star-icon" src="img/star.svg" />
-              <p className="type-photo">EVENT PHOTOGRAPHY</p>
-            </div> */}
-            {/* <div className="type-cell">
-              <img className="star-icon" src="img/star.svg" />
-              <p className="type-photo">COMERCIAL PHOTOGRAPHY</p>
-            </div> */}
             <div className="type-cell">
               <img className="star-icon" src="img/star.svg" />
-              <p className="type-photo">PRODUCT PHOTOGRAPHY</p>
+              <p className="type-photo">LANDSCAPE</p>
             </div>
-            {/* <div className="type-cell">
-              <img className="star-icon" src="img/star.svg" />
-              <p className="type-photo">WEDDING PHOTOGRAPHY</p>
-            </div> */}
             <div className="type-cell">
               <img className="star-icon" src="img/star.svg" />
-              <p className="type-photo">LANDSCAPE PHOTOGRAPHY</p>
+              <p className="type-photo">ANIMALS</p>
             </div>
-            {/* <div className="type-cell">
-              <img className="star-icon" src="img/star.svg" />
-              <p className="type-photo">BRANDING PHOTOGRAPHY</p>
-            </div> */}
             <div className="type-cell">
               <img className="star-icon" src="img/star.svg" />
-              <p className="type-photo">PORTRAIT PHOTOGRAPHY</p>
+              <p className="type-photo">NATURE</p>
+            </div>
+            <div className="type-cell">
+              <img className="star-icon" src="img/star.svg" />
+              <p className="type-photo">STILL LIFE</p>
+            </div>
+            <div className="type-cell">
+              <img className="star-icon" src="img/star.svg" />
+              <p className="type-photo">PORTRAIT</p>
             </div>
           </div>
           <div className="collage">
@@ -55,7 +47,7 @@ module.exports = function Home(props) {
             <h4 className="portfolio-title">PORTFOLIO</h4>
             <h2 className="portfolio-subtitle">EXPLORE MY PHOTOGRAPHY WORK.</h2>
           </div>
-          <div className="portfolio-nav-buttons">
+          <div className="portfolio-nav-buttons pc">
             <div className="left-right-buttons">
               <button className="button circle-btn first-circle portfolio-prev left-right">
                 <img src="img/left.svg" />
@@ -64,11 +56,17 @@ module.exports = function Home(props) {
                 <img src="img/right.svg" />
               </button>
             </div>
-            <button className="button margin-l-20" id="allWorks">
+            <button className="button margin-l-20 pc" id="allWorks">
               View All Works &rarr;
             </button>
           </div>
         </div>
+        <a className="phone" href="/portfolio">
+          <button className="button phone phone-viewAll" id="allWorks">
+            View All Works &rarr;
+          </button>
+        </a>
+        <div className="line phone"></div>
         <div className="portfolio-widget portfolio-slider">
           {categories.map((category) =>
             category.Photos.map((photo) => (
@@ -103,13 +101,21 @@ module.exports = function Home(props) {
                   )}
 
                   <a className="view-card" href={`/portfolio/${category.categoryName}/${photo.id}`}>
-                    <p>VIEW PROJECT</p>
+                    <p>VIEW PHOTO</p>
                     <img src="img/arrow-up.svg" />
                   </a>
                 </div>
               </div>
             )),
           )}
+        </div>
+        <div className="left-right-buttons phone">
+          <button className="button circle-btn first-circle portfolio-prev left-right">
+            <img src="img/left.svg" />
+          </button>
+          <button className="button circle-btn last-circle portfolio-next left-right">
+            <img src="img/right.svg" />
+          </button>
         </div>
       </div>
     </Layout>

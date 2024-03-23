@@ -5,7 +5,7 @@ module.exports = function CategoryPhotos(props) {
   const { category, user } = props;
   return (
     <Layout {...props}>
-      <div className="portfolio-section">
+      <div className="portfolio-section category-phone">
         <div className="portfolio-nav">
           <div className="portfolio-text-div">
             <h2 className="portfolio-subtitle">{category.categoryName}</h2>
@@ -13,10 +13,10 @@ module.exports = function CategoryPhotos(props) {
           {user?.role === 'ADMIN' ? (
             <a
               href={`/portfolio/${category.categoryName}/new-photo`}
-              className="button btn-view-all"
+              
               id="allWorks"
-            >
-              Add Photo
+            ><button className="button btn-view-all phone-viewAll">
+              Add Photo</button>
             </a>
           ) : (
             <></>
@@ -52,7 +52,7 @@ module.exports = function CategoryPhotos(props) {
                     </svg>
                   ) : (<></>)}
                 <a className="view-card" href={`/portfolio/${category.categoryName}/${photo.id}`}>
-                  <p>VIEW PROJECT</p>
+                  <p>VIEW PHOTO</p>
                   <img src="/img/arrow-up.svg" />
                 </a>
               </div>

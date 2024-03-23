@@ -8,10 +8,17 @@ body {
 main {
   display: flex;
   flex-direction: column;
+  margin-top: 121px;
 }
 
 /* header */
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* Занимает всю ширину экрана */
+  background-color: #070708;
+  z-index: 1000;
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -20,7 +27,7 @@ main {
 
 .navbar {
   display: flex;
-  height: 120px;
+  height: 100%;
   width: 100%;
   justify-content: space-around;
   align-items: center;
@@ -29,8 +36,12 @@ main {
   border-right: 1px solid #1c1c21;
 }
 
+.hamburger-menu {
+  display: none;
+}
+
 .logo-image {
-  height: 125px;
+  height: 120px;
 }
 
 .navbar-container {
@@ -48,7 +59,7 @@ main {
   border-right: 1px solid #1c1c21;
   color: #afb0b6;
   height: 70px;
-  /* width: 120px; */
+  width: 120px;
 }
 
 .navbar-button:hover {
@@ -65,6 +76,7 @@ main {
 
 .btn-log-reg {
   display: flex;
+  align-items: center;
 }
 
 .button {
@@ -105,7 +117,7 @@ main {
 .footer-data {
   display: flex;
   align-items: center;
-  /* width: 300px; */
+  width: 300px;
   justify-content: space-between;
 }
 
@@ -142,7 +154,7 @@ main {
 
 .svg {
   height: 40px;
-  /* width: 40px; */
+  width: 40px;
   padding: 11px;
 }
 
@@ -258,7 +270,7 @@ main {
   padding: 10px;
   border-radius: 50%;
   height: 62px;
-  /* width: 62px; */
+  width: 62px;
 }
 
 .footer-btn {
@@ -283,6 +295,7 @@ main {
   background-color: #1c1c21;
   border-radius: 20px;
   margin-bottom: 10px;
+  height: 200px;
 }
 
 .photo-img {
@@ -312,7 +325,7 @@ main {
   display: flex;
   margin: 0px;
   height: 35px;
-  /* width: 160px; */
+  width: 145px;
   align-items: center;
   justify-content: space-between;
   text-decoration: none;
@@ -342,7 +355,7 @@ main {
   flex-direction: column;
   align-items: center;
   align-self: center;
-  /* width: 400px; */
+  width: 400px;
   margin-bottom: 200px;
   margin-top: 50px;
   border: 2px solid #1c1c21;
@@ -484,10 +497,14 @@ input[type='file'] {
   fill: maroon;
 }
 
+.phone {
+  display: none;
+}
+
 @media (max-width: 1440px) {
   .navbar {
     height: 80px;
-    margin: 0px 100px;
+    margin: 0 auto;
   }
 
   .logo-image {
@@ -629,9 +646,271 @@ input[type='file'] {
     font-size: 30px;
   }
 }
-@media (max-width: 767px) {
+@media (max-width: 500px) {
+  main {
+    margin-top: 112px;
+  }
+
+  .phone {
+    display: inline-block;
+  }
+
+  .left-right-buttons {
+    align-self: center;
+  }
+
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; /* Занимает всю ширину экрана */
+    background-color: #070708;
+    z-index: 1000;
+  }
+
+  .navbar {
+    justify-content: space-between;
+  }
+
+  .hamburger-menu {
+    display: block;
+    height: 68px;
+    width: 68px;
+    border-top-left-radius: 20px;
+    border-left: 1px solid #1c1c21;
+    border-top: 1px solid #1c1c21;
+    align-self: flex-end;
+  }
+
+  #menu__toggle {
+    opacity: 0;
+  }
+
+  #menu__toggle:checked ~ .menu__btn > span {
+    transform: rotate(45deg);
+  }
+  #menu__toggle:checked ~ .menu__btn > span::before {
+    top: 0;
+    transform: rotate(0);
+  }
+  #menu__toggle:checked ~ .menu__btn > span::after {
+    top: 0;
+    transform: rotate(90deg);
+  }
+  #menu__toggle:checked ~ .menu__box {
+    visibility: visible;
+    right: 0; /* изменено на right */
+  }
+
+  .menu__btn {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 65px;
+    right: 36px; /* изменено на right */
+    width: 26px;
+    height: 26px;
+    z-index: 3;
+    background-color: #1c1c21;
+  }
+
+  .menu__btn > span,
+  .menu__btn > span::before,
+  .menu__btn > span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    transition-duration: 0.25s;
+  }
+  .menu__btn > span::before {
+    content: '';
+    top: -8px;
+  }
+  .menu__btn > span::after {
+    content: '';
+    top: 8px;
+  }
+
+  .menu__box {
+    display: block;
+    position: fixed;
+    visibility: hidden;
+    top: 0;
+    right: -100%; /* изменено на right */
+    width: 300px;
+    height: 100%;
+    margin: 0;
+    padding: 0px 0;
+    list-style: none;
+    background-color: #1c1c21;
+    box-shadow: -1px 0px 6px rgba(0, 0, 0, 0.2); /* изменено на -1px */
+    transition-duration: 0.25s;
+    z-index: 2;
+  }
+
+  .first-li {
+    height: 112px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .userName {
+    font-size: 30px;
+  }
+
+  .menu__item {
+    display: block;
+    padding: 12px 24px;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    transition-duration: 0.25s;
+  }
+  .menu__item:hover {
+    background-color: #cfd8dc;
+  }
+
+  .logo-image {
+    margin-left: 20px;
+    height: 110px;
+  }
+
+  .navbar-container {
+    display: none;
+  }
+
+  .btn-log-reg {
+    display: none;
+  }
+
+  .navbar {
+    height: 100%;
+    margin: 0px 16px;
+  }
+
+  .header {
+    height: 110px;
+  }
+
+  .landing-types-collage {
+    margin-bottom: 80px;
+  }
+
+  .landing div {
+    margin: 0px 16px;
+  }
+
+  .landing-h4 {
+    font-size: 20px;
+  }
+
   .landing-h1 {
-    font-size: 100px;
+    font-size: 55px;
+  }
+
+  .collage {
+    margin: 0px 16px;
+  }
+
+  .collage-img {
+    height: auto;
+  }
+
+  .portfolio-section {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 16px 80px 16px;
+  }
+
+  .pc {
+    display: none;
+  }
+
+  .phone-viewAll {
+    width: 150px;
+    height: 50px;
+    font-size: 14px;
+  }
+
+  .line {
+    width: 100%;
+    border-bottom: 1px solid #1c1c21;
+    margin-bottom: 40px;
+    margin-top: 20px;
+  }
+
+  .view-card p {
+    font-size: 16px;
+  }
+
+  .card {
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  .card-description h3 {
+    font-size: 16px;
+  }
+
+  .like {
+    height: 22px;
+  }
+
+  .circle-btn {
+    height: 48px;
+    width: 48px;
+    padding: 13px;
+  }
+
+  .footer-btn {
+    height: 40px;
+    width: 40px;
+    padding: 9px;
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: column;
+    height: 168px;
+  }
+
+  .footer-data {
+    width: 230px;
+  }
+
+  .footer-data a {
+    font-size: 14px;
+  }
+
+  .footer p {
+    font-size: 14px;
+  }
+
+  .footer-btn-div {
+    margin-bottom: 20px;
+  }
+
+  .phone-category-nav {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .photo-img {
+    height: 250px;
+  }
+
+  .div-card-img {
+    height: 250px;
+  }
+
+  .category-phone {
+    margin-top: 10px;
   }
 }
 /* @media (min-width: 479px) and (max-width: 980px) {
