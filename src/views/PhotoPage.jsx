@@ -3,7 +3,6 @@ const Layout = require('./Layout');
 
 module.exports = function PhotoPage(props) {
   const { photo, category, user } = props;
-  console.log(category);
   return (
     <Layout {...props}>
       <div className="photo-card">
@@ -14,15 +13,16 @@ module.exports = function PhotoPage(props) {
             <p className="photo-description">{photo.description}</p>
           </div>
         </div>
-        {user?.role === 'ADMIN' ? (<div className="photo-buttons">
-          <a href={`/portfolio/${category.categoryName}/${photo.id}/edit`} className="button">
-            Edit
-          </a>
-          <button className="button" id="deletePhoto" data-photoid={photo.id}>
-            Delete
-          </button>
-        </div>) : (<></>)}
-        
+        {user?.role === 'ADMIN' && (
+          <div className="photo-buttons">
+            <a href={`/portfolio/${category.categoryName}/${photo.id}/edit`} className="button">
+              Edit
+            </a>
+            <button type="button" className="button" id="deletePhoto" data-photoid={photo.id}>
+              Delete
+            </button>
+          </div>
+        )}
       </div>
     </Layout>
   );

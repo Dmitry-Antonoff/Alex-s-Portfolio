@@ -29,7 +29,7 @@ category?.addEventListener('submit', async (e) => {
     },
     body: JSON.stringify(Object.fromEntries(data)),
   });
-  
+
   if (response.status === 200) {
     window.location.href = '/portfolio';
   } else if (response.status === 500) {
