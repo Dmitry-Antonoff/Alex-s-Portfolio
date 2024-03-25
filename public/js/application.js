@@ -33,11 +33,11 @@ if (window.location.href.split('/')[4] === 'login') {
   regBtn.style.display = 'none';
 }
 
-let input = document.getElementById('inputTag');
-let imageName = document.getElementById('imageName');
+const input = document.getElementById('inputTag');
+const imageName = document.getElementById('imageName');
 
 input?.addEventListener('change', () => {
-  let inputImage = document.querySelector('input[type=file]').files[0];
+  const inputImage = document.querySelector('input[type=file]').files[0];
 
   imageName.innerText = inputImage.name;
 });

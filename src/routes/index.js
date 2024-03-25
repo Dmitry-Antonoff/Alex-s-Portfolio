@@ -79,7 +79,9 @@ router.get('/portfolio/new-category', isAdmin, (req, res) => {
 
 router.get('/portfolio/:categoryName/edit', isAdmin, async (req, res) => {
   try {
-    const category = await Category.findOne({ where: { categoryName: req.params.categoryName } });
+    const category = await Category.findOne({
+      where: { categoryName: req.params.categoryName },
+    });
     res.render(FormCategoryEdit, { category });
   } catch (error) {
     res.render(Error, { message: 'Something went wrong...', error: {} });
@@ -112,7 +114,9 @@ router.get('/portfolio/:categoryName', async (req, res) => {
 
 router.get('/portfolio/:categoryName/new-photo', isAdmin, async (req, res) => {
   try {
-    const category = await Category.findOne({ where: { categoryName: req.params.categoryName } });
+    const category = await Category.findOne({
+      where: { categoryName: req.params.categoryName },
+    });
     res.render(FormPhoto, { category });
   } catch (error) {
     res.render(Error, { message: 'Something went wrong...', error: {} });
@@ -122,7 +126,9 @@ router.get('/portfolio/:categoryName/new-photo', isAdmin, async (req, res) => {
 router.get('/portfolio/:categoryName/:id', async (req, res) => {
   try {
     const photo = await Photo.findOne({ where: { id: req.params.id } });
-    const category = await Category.findOne({ where: { categoryName: req.params.categoryName } });
+    const category = await Category.findOne({
+      where: { categoryName: req.params.categoryName },
+    });
     res.render(PhotoPage, { photo, category });
   } catch (error) {
     res.render(Error, { message: 'Something went wrong...', error: {} });
@@ -131,7 +137,9 @@ router.get('/portfolio/:categoryName/:id', async (req, res) => {
 
 router.get('/portfolio/:categoryName/:id/edit', isAdmin, async (req, res) => {
   try {
-    const category = await Category.findOne({ where: { categoryName: req.params.categoryName } });
+    const category = await Category.findOne({
+      where: { categoryName: req.params.categoryName },
+    });
     const photo = await Photo.findOne({ where: { id: req.params.id } });
     res.render(EditPhoto, { category, photo });
   } catch (error) {

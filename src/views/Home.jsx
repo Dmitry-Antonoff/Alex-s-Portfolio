@@ -16,23 +16,23 @@ module.exports = function Home(props) {
         <div className="types-collage">
           <div className="photo-types">
             <div className="type-cell">
-              <img className="star-icon" src="img/star.svg" />
+              <img className="star-icon" src="img/star.svg" alt="star" />
               <p className="type-photo">LANDSCAPE</p>
             </div>
             <div className="type-cell">
-              <img className="star-icon" src="img/star.svg" />
+              <img className="star-icon" src="img/star.svg" alt="star" />
               <p className="type-photo">ANIMALS</p>
             </div>
             <div className="type-cell">
-              <img className="star-icon" src="img/star.svg" />
+              <img className="star-icon" src="img/star.svg" alt="star" />
               <p className="type-photo">NATURE</p>
             </div>
             <div className="type-cell">
-              <img className="star-icon" src="img/star.svg" />
+              <img className="star-icon" src="img/star.svg" alt="star" />
               <p className="type-photo">STILL LIFE</p>
             </div>
             <div className="type-cell">
-              <img className="star-icon" src="img/star.svg" />
+              <img className="star-icon" src="img/star.svg" alt="star" />
               <p className="type-photo">PORTRAIT</p>
             </div>
           </div>
@@ -49,30 +49,36 @@ module.exports = function Home(props) {
           </div>
           <div className="portfolio-nav-buttons pc">
             <div className="left-right-buttons">
-              <button className="button circle-btn first-circle portfolio-prev left-right">
-                <img src="img/left.svg" />
+              <button
+                type="button"
+                className="button circle-btn first-circle portfolio-prev left-right"
+              >
+                <img alt="arror-left" src="img/left.svg" />
               </button>
-              <button className="button circle-btn last-circle portfolio-next left-right">
-                <img src="img/right.svg" />
+              <button
+                type="button"
+                className="button circle-btn last-circle portfolio-next left-right"
+              >
+                <img alt="arror-right" src="img/right.svg" />
               </button>
             </div>
-            <button className="button margin-l-20 pc" id="allWorks">
+            <button type="button" className="button margin-l-20 pc" id="allWorks">
               View All Works &rarr;
             </button>
           </div>
         </div>
         <a className="phone" href="/portfolio">
-          <button className="button phone phone-viewAll" id="allWorks">
+          <button type="button" className="button phone phone-viewAll" id="allWorks">
             View All Works &rarr;
           </button>
         </a>
-        <div className="line phone"></div>
+        <div className="line phone" />
         <div className="portfolio-widget portfolio-slider">
           {categories.map((category) =>
             category.Photos.map((photo) => (
               <div className="card">
                 <div className="div-card-img">
-                  <img className="photo-img" src={`${photo.photoPath}`} alt="photo" />
+                  <img className="photo-img" src={`${photo.photoPath}`} alt="" />
                 </div>
                 <div
                   className="card-description"
@@ -80,7 +86,7 @@ module.exports = function Home(props) {
                   data-categoryname={category.categoryName}
                 >
                   <h3>{photo.name}</h3>
-                  {user ? (
+                  {user && (
                     <svg
                       data-id={photo.id}
                       data-categoryname={category.categoryName}
@@ -94,15 +100,13 @@ module.exports = function Home(props) {
                       <path
                         d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.48 5.48 0 0 0 0-7.78z"
                         fill="red"
-                      ></path>
+                      />
                     </svg>
-                  ) : (
-                    <></>
                   )}
 
                   <a className="view-card" href={`/portfolio/${category.categoryName}/${photo.id}`}>
                     <p>VIEW PHOTO</p>
-                    <img src="img/arrow-up.svg" />
+                    <img alt="arror-up" src="img/arrow-up.svg" />
                   </a>
                 </div>
               </div>
@@ -110,11 +114,14 @@ module.exports = function Home(props) {
           )}
         </div>
         <div className="left-right-buttons phone">
-          <button className="button circle-btn first-circle portfolio-prev left-right">
-            <img src="img/left.svg" />
+          <button
+            type="button"
+            className="button circle-btn first-circle portfolio-prev left-right"
+          >
+            <img alt="arror-left" src="img/left.svg" />
           </button>
-          <button className="button circle-btn last-circle portfolio-next left-right">
-            <img src="img/right.svg" />
+          <button type="button" className="button circle-btn last-circle portfolio-next left-right">
+            <img alt="arror-right" src="img/right.svg" />
           </button>
         </div>
       </div>

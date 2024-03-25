@@ -1,6 +1,6 @@
-$(document).ready(function () {
-  $('.portfolio-section').each(function (index, element) {
-    var $slider = $(element).find('.portfolio-slider');
+jQuery(document).ready(() => {
+  jQuery('.portfolio-section').each((index, element) => {
+    const $slider = jQuery(element).find('.portfolio-slider');
 
     $slider.slick({
       slidesToScroll: 1,
@@ -25,19 +25,19 @@ $(document).ready(function () {
       ],
     });
 
-    $(element)
+    jQuery(element)
       .find('.portfolio-prev')
-      .click(function () {
+      .click(() => {
         $slider.slick('slickPrev');
       });
 
-    $(element)
+    jQuery(element)
       .find('.portfolio-next')
-      .click(function () {
+      .click(() => {
         $slider.slick('slickNext');
       });
   });
 });
-$(window).on('resize', function () {
-  $('.portfolio-slider').slick('setPosition');
+jQuery(window).on('resize', () => {
+  jQuery('.portfolio-slider').slick('setPosition');
 });
