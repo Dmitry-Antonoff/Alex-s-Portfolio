@@ -15,7 +15,7 @@ const portfolioRouter = require('./src/routes/portfolio');
 const addRender = require('./src/middleware/addRender');
 
 const app = express();
-const PORT = 3000;
+const PORT = 3300;
 
 const sessionConfig = {
   name: 'UserAuth',
