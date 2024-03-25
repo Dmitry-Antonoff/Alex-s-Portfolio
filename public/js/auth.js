@@ -3,7 +3,7 @@ const { registration, login } = document.forms;
 if (window.location.href.split('/')[4] === 'registration') {
   const saveRegDataCheckbox = document.getElementById('regRememberMe');
 
-  saveRegDataCheckbox?.addEventListener('change', function () {
+  saveRegDataCheckbox?.addEventListener('change', () => {
     const formData = {};
     formData.name = registration.userName.value;
     formData.email = registration.email.value;
@@ -26,7 +26,7 @@ if (window.location.href.split('/')[4] === 'registration') {
 
 if (window.location.href.split('/')[4] === 'login') {
   const saveLogDataCheckbox = document.getElementById('logRememberMe');
-  saveLogDataCheckbox?.addEventListener('change', function () {
+  saveLogDataCheckbox?.addEventListener('change', () => {
     const formData = {};
     formData.email = login.email.value;
 
@@ -85,7 +85,9 @@ registration?.addEventListener('submit', async (e) => {
     const response = await submitForm(Object.fromEntries(data), '/auth/registration');
     if (response.status === 200) {
       showToast('You have successfully registered', { type: 'success' });
-      setTimeout(() => (window.location.href = '/auth/login'), 2000);
+      setTimeout(() => {
+        window.location.href = '/auth/login';
+      }, 2000);
     } else if (response.status === 401) {
       showToast('Email address is already taken');
     }

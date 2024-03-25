@@ -2,7 +2,6 @@ const React = require('react');
 const Layout = require('./Layout');
 
 module.exports = function Registration(props) {
-  const {} = props;
   return (
     <Layout {...props}>
       <div className="div-form">
@@ -21,7 +20,7 @@ module.exports = function Registration(props) {
           />
           <div>
             <input className="checkbox" type="checkbox" value="lsRememberMe" id="regRememberMe" />
-            <label for="rememberMe">Remember me</label>
+            <label htmlFor="rememberMe">Remember me</label>
           </div>
           <button className="button form-submit-btn" type="submit">
             Register

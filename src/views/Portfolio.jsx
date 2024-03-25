@@ -6,12 +6,12 @@ module.exports = function Portfolio(props) {
 
   return (
     <Layout {...props}>
-      {user?.role === 'ADMIN' ? (
+      {user?.role === 'ADMIN' && (
         <a href="/portfolio/new-category" className="addCategory">
-          <button className="button phone-viewAll">Add Category</button>
+          <button type="button" className="button phone-viewAll">
+            Add Category
+          </button>
         </a>
-      ) : (
-        <></>
       )}
 
       <div className="portfolio">
@@ -23,53 +23,69 @@ module.exports = function Portfolio(props) {
               </div>
               <div className="portfolio-nav-buttons pc">
                 <div className="left-right-buttons">
-                  <button className="button circle-btn first-circle portfolio-prev left-right">
-                    <img src="/img/left.svg" />
+                  <button
+                    type="button"
+                    className="button circle-btn first-circle portfolio-prev left-right"
+                  >
+                    <img alt="arror-left" src="/img/left.svg" />
                   </button>
-                  <button className="button circle-btn last-circle portfolio-next left-right">
-                    <img src="/img/right.svg" />
+                  <button
+                    type="button"
+                    className="button circle-btn last-circle portfolio-next left-right"
+                  >
+                    <img alt="arror-right" src="/img/right.svg" />
                   </button>
                 </div>
-                {user?.role === 'ADMIN' ? (
+                {user?.role === 'ADMIN' && (
                   <>
-                    <a data-categoryid={category.id}>
-                      <button className="button">Delete Category</button>
-                    </a>
+                    <button type="button" data-categoryid={category.id} className="button">
+                      Delete Category
+                    </button>
+
                     <a href={`/portfolio/${category.categoryName}/edit`}>
-                      <button className="button">Edit Category</button>
+                      <button type="button" className="button">
+                        Edit Category
+                      </button>
                     </a>
                   </>
-                ) : (
-                  <></>
                 )}
                 <a href={`/portfolio/${category.categoryName}`}>
-                  <button className="button">View All Photos &rarr;</button>
+                  <button type="button" className="button">
+                    View All Photos &rarr;
+                  </button>
                 </a>
               </div>
             </div>
             <div className="phone-category-nav">
-              {user?.role === 'ADMIN' ? (
+              {user?.role === 'ADMIN' && (
                 <>
-                  <a data-categoryid={category.id} className=" phone">
-                    <button className="button phone-viewAll">Delete Category</button>
-                  </a>
+                  <button
+                    type="button"
+                    data-categoryid={category.id}
+                    className="button phone phone-viewAll"
+                  >
+                    Delete Category
+                  </button>
+
                   <a href={`/portfolio/${category.categoryName}/edit`} className=" phone ">
-                    <button className="button phone-viewAll">Edit Category</button>
+                    <button type="button" className="button phone-viewAll">
+                      Edit Category
+                    </button>
                   </a>
                 </>
-              ) : (
-                <></>
               )}
               <a href={`/portfolio/${category.categoryName}`} className=" phone">
-                <button className="button phone-viewAll">View All Photos &rarr;</button>
+                <button type="button" className="button phone-viewAll">
+                  View All Photos &rarr;
+                </button>
               </a>
             </div>
-            <div className="line phone"></div>
+            <div className="line phone" />
             <div className="portfolio-widget portfolio-slider">
               {category.Photos?.map((photo) => (
                 <div className="card">
                   <div className="div-card-img">
-                    <img className="photo-img" src={`${photo.photoPath}`} alt="photo" />
+                    <img className="photo-img" src={`${photo.photoPath}`} alt="" />
                   </div>
                   <div
                     className="card-description"
@@ -77,7 +93,7 @@ module.exports = function Portfolio(props) {
                     data-categoryname={category.categoryName}
                   >
                     <h3>{photo.name}</h3>
-                    {user ? (
+                    {user && (
                       <svg
                         data-id={photo.id}
                         data-categoryname={category.categoryName}
@@ -91,28 +107,32 @@ module.exports = function Portfolio(props) {
                         <path
                           d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.48 5.48 0 0 0 0-7.78z"
                           fill="red"
-                        ></path>
+                        />
                       </svg>
-                    ) : (
-                      <></>
                     )}
                     <a
                       className="view-card"
                       href={`/portfolio/${category.categoryName}/${photo.id}`}
                     >
                       <p>VIEW PHOTO</p>
-                      <img src="/img/arrow-up.svg" />
+                      <img alt="arror-up" src="/img/arrow-up.svg" />
                     </a>
                   </div>
                 </div>
               ))}
             </div>
             <div className="left-right-buttons phone">
-              <button className="button circle-btn first-circle portfolio-prev left-right">
-                <img src="/img/left.svg" />
+              <button
+                type="button"
+                className="button circle-btn first-circle portfolio-prev left-right"
+              >
+                <img alt="arror-left" src="/img/left.svg" />
               </button>
-              <button className="button circle-btn last-circle portfolio-next left-right">
-                <img src="/img/right.svg" />
+              <button
+                type="button"
+                className="button circle-btn last-circle portfolio-next left-right"
+              >
+                <img alt="arror-right" src="/img/right.svg" />
               </button>
             </div>
           </div>
